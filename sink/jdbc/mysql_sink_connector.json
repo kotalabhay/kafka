@@ -1,0 +1,27 @@
+
+{
+  "name": "comments_mysql_connector_new",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "task.max": "1",
+    "topics": "comments.sample_mflix.comments",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://localhost:8081",
+    "value.converter.schema.registry.url": "http://localhost:8081",
+    "transforms": "Flatten,RenameFields",
+    "transforms.Flatten.type":"org.apache.kafka.connect.transforms.Flatten$Value",
+    "transforms.Flatten.delimiter":"_",
+    "transforms.RenameFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.RenameFields.renames": "name:name,email:email,movie_id:movie_id,text:text,date:date",
+    "connection.url": "jdbc:mysql://db4free.net:3306/",
+    "connection.user": "kafka_user",
+    "connection.password": "kafka123",
+    "insert.mode": "upsert",
+    "batch.size": "1000",
+    "table.name.format": "kafkas.comments",
+    "pk.mode": "record_value",
+    "pk.fields": "_id",
+    "db.timezone": "Asia/Kolkata"
+  }
+}

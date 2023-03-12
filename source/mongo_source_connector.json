@@ -1,0 +1,16 @@
+{
+  "name": "comments_source_mongo1",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "connection.uri": "mongodb+srv://kafka_user:Kafka%40123@cluster-kafka.0uk5opz.mongodb.net/",
+    "database": "sample_mflix",
+    "collection": "comments",
+    "topic.prefix": "comments",
+    "output.format.key": "schema",
+    "output.format.value": "schema",
+    "topic.creation.enable": "true",
+    "topic.creation.default.partitions": "-1",
+    "topics": "comments_source",
+    "topic.creation.default.replication.factor": "-1"
+  }
+}
